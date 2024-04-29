@@ -1,15 +1,7 @@
 import React from 'react';
 
+import * as S from './styles';
 
-const Home: React.FC = () => {
-
-
-
-  return (
-    <div>
-        Home
-    </div>
-  );
-};
+const Home: React.FC = () => <S.Container>Home</S.Container>;
 
 export default Home;
