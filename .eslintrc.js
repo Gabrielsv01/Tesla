@@ -43,6 +43,7 @@ module.exports = {
           '.web.jsx',
           '.web.ts',
           '.web.tsx',
+          '.css',
         ],
       },
     },
@@ -54,7 +55,7 @@ module.exports = {
         groups: [
           '/^react+$/',
           ['/^react-?/', 'module'],
-          '/^(@shared|@services|@routes|@assets|@screens|@context|@theme)/?.*/',
+          '/^(shared|services|routes|assets|screens|context|theme)/?.*/',
           ['parent', 'sibling'],
           '/types/',
           '/styles/',
