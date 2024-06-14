@@ -14,6 +14,7 @@ const dictionary = {
 const buildNumbers = (value: number) => {
   const modNumber = 9;
   const dictionaryKey = '1';
+  dictionary[dictionaryKey] = [1];
 
   for (let i = 1; i < value; i += 1) {
     const lastItem =
@@ -23,4 +24,4 @@ const buildNumbers = (value: number) => {
   return dictionary[dictionaryKey];
 };
 
-export {buildNumbers};
+export {buildNumbers, dictionary};

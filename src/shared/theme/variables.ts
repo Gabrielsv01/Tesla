@@ -3,7 +3,7 @@ import {Theme} from './types';
 const theme: Theme = {
   colors: {
     primary: '#fed500',
-    secunday: '#016098',
+    secunday: '#1094e2',
     secundayDark: '#064875',
     white: '#fff',
     black: '#000',
