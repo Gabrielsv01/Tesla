@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tesla-build/static/css/main.dcd3668c.css",
+    "main.js": "/tesla-build/static/js/main.07bc6515.js",
+    "index.html": "/tesla-build/index.html",
+    "main.dcd3668c.css.map": "/tesla-build/static/css/main.dcd3668c.css.map",
+    "main.07bc6515.js.map": "/tesla-build/static/js/main.07bc6515.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dcd3668c.css",
+    "static/js/main.07bc6515.js"
+  ]
+}
