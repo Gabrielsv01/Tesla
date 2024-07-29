@@ -32,6 +32,41 @@ const Home: React.FC = () => {
     );
   };
 
+  const renderSum = (item: number) => {
+    const secund = Math.floor(Math.random() * 100000);
+    const sum = item + secund;
+    const {level: levelValueSum, primitive: primitiveSum} = calcLevel(sum);
+    const {level: levelValueSecund, primitive: primitiveSecund} =
+      calcLevel(secund);
+    const {level: levelValue, primitive} = calcLevel(item);
+
+    return (
+      <S.WrapperNumber key={item}>
+        <div>
+          {item} = Level {levelValue} e Primitivo {primitive}
+        </div>
+        <div>
+          {secund} = Level {levelValueSecund} e Primitivo {primitiveSecund}
+        </div>
+        <div>
+          {item} + {secund} = {sum}
+        </div>
+        <div>
+          {sum} = Level {levelValueSum} e Primitivo {primitiveSum}
+        </div>
+        <div>--------</div>
+      </S.WrapperNumber>
+    );
+  };
+
+  const buildSum = () => {
+    const randomNumbers: number[] = [];
+    for (let i = 0; i < 100; i += 1) {
+      randomNumbers.push(Math.floor(Math.random() * 100000));
+    }
+    return randomNumbers.map(item => renderSum(item));
+  };
+
   // const buildeChart = () =>
   //   data.map(item => {
   //     const {level: levelValue, primitive} = calcLevel(item);
@@ -100,6 +135,14 @@ const Home: React.FC = () => {
         <S.CardWrapper>
           {data.map(item => (
             <div key={item}>{renderItems(item)}</div>
+          ))}
+        </S.CardWrapper>
+      </S.Card>
+      <S.Card>
+        <S.Title>Gerando dados pela soma até 10000</S.Title>
+        <S.CardWrapper>
+          {buildSum().map(item => (
+            <b key={item.toString()}>{item}</b>
           ))}
         </S.CardWrapper>
       </S.Card>
