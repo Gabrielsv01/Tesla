@@ -42,11 +42,11 @@ export const Card = styled.div`
   `}
 `;
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled.div<{disableMaxHeight?: boolean}>`
   width: 100%;
   background-color: white;
   display: flex;
-  max-height: 200px;
+  max-height: ${({disableMaxHeight}) => (disableMaxHeight ? 'none' : '200px')};
   flex-direction: column;
   align-items: center;
   font-size: ${theme.fontSize.medium}px;
@@ -67,4 +67,12 @@ export const WrapperEchart = styled.div`
   ${media.mobile`
     padding: ${theme.spacing.zero}px ${theme.spacing.medium}px;
   `}
+`;
+
+export const SubTitle = styled.h2``;
+
+export const Description = styled.p`
+  font-weight: ${theme.fontWeight.regular};
+  margin: ${theme.spacing.small}px ${theme.spacing.small}px
+    ${theme.spacing.zero}px;
 `;
