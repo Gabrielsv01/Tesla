@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 
-// import Echart from 'shared/components/Echart/Echart';
 import {buildNumbers} from 'shared/utils/buildNumbers';
-import {calcLevel} from 'shared/utils/calcLevel';
+import {calcLevel, calcValue} from 'shared/utils/calcLevel';
 
 import MultiplicationRules from './rules/multiplication';
 import SubtractionRules from './rules/subtraction';
@@ -17,11 +16,9 @@ const Home: React.FC = () => {
     levelBase: number;
     list: number[];
   }>();
-
-  // const data = [
-  //   2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
-  //   73, 79, 83, 89, 97,
-  // ];
+  const [searchLevel, setSearchLevel] = useState('');
+  const [searchPrimitive, setSearchPrimitive] = useState('');
+  const [foundNumber, setFoundNumber] = useState<number | null>(null);
 
   const renderItems = (item: number) => {
     const {level: levelValue, primitive} = calcLevel(item);
@@ -73,11 +70,29 @@ const Home: React.FC = () => {
     return randomNumbers.map(item => renderSum(item));
   };
 
-  // const buildeChart = () =>
-  //   data.map(item => {
-  //     const {level: levelValue, primitive} = calcLevel(item);
-  //     return [levelValue, primitive, 5];
-  //   });
+  const handleFindNumber = (
+    levelInput = searchLevel,
+    primitiveInput = searchPrimitive,
+  ) => {
+    const targetLevel = parseInt(levelInput, 10);
+    const targetPrimitive = parseInt(primitiveInput, 10);
+
+    const result = calcValue(targetLevel, targetPrimitive);
+
+    setFoundNumber(result);
+  };
+
+  const foundNumberLabel = (() => {
+    if (foundNumber === null) {
+      return '-';
+    }
+
+    if (foundNumber >= 0) {
+      return foundNumber;
+    }
+
+    return '-';
+  })();
 
   return (
     <S.Container>
@@ -100,6 +115,33 @@ const Home: React.FC = () => {
         <S.CardWrapper>
           <div>Level: {level && level.level.toString()}</div>
           <div>Primitivo: {level && level.primitive.toString()}</div>
+        </S.CardWrapper>
+      </S.Card>
+
+      <S.Card>
+        <S.Title>Encontrar número por level e primitivo</S.Title>
+        <S.Input
+          inputMode="numeric"
+          placeholder="Digite o level"
+          value={searchLevel}
+          onChange={event => {
+            const nextLevel = event.target.value;
+            setSearchLevel(nextLevel);
+            handleFindNumber(nextLevel, searchPrimitive);
+          }}
+        />
+        <S.Input
+          inputMode="numeric"
+          placeholder="Digite o primitivo"
+          value={searchPrimitive}
+          onChange={event => {
+            const nextPrimitive = event.target.value;
+            setSearchPrimitive(nextPrimitive);
+            handleFindNumber(searchLevel, nextPrimitive);
+          }}
+        />
+        <S.CardWrapper>
+          <div>Número: {foundNumberLabel}</div>
         </S.CardWrapper>
       </S.Card>
       <S.Card>

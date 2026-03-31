@@ -14,4 +14,6 @@ const calcLevel = (value: number) => {
   return {level: newLevel, primitive};
 };
 
-export {calcLevel};
+const calcValue = (level: number, primitive: number) => level * 9 + primitive;
+
+export {calcLevel, calcValue};

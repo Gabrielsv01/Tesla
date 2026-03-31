@@ -38,50 +38,61 @@ const MultiplicationRules: React.FC = () => (
       </S.Description>
 
       <S.Description>
-        <b>L(C) = 9(L(A) * L(B)) + (L(A) * P(B)) + (L(B) * P(A)) + Trabalho</b>
+        <b>
+          L(C) = 9(L(A) * L(B)) + (L(A) * P(B)) + (L(B) * P(A)) + Transporte
+        </b>
       </S.Description>
 
       <S.Description>
-        Onde o <b>Trabalho</b> é o transporte do produto dos primitivos:
+        Onde o <b>Transporte</b> é o transporte do produto dos primitivos:
         <ul>
           <li>
             <b>⌊(P(A) * P(B)) / 9⌋</b> (Parte inteira da divisão)
           </li>
           <li>
             <i>Nota:</i> Se o produto for múltiplo de 9, subtrai-se 1 do
-            Trabalho para manter o Primitivo 9.
+            Transporte para manter o Primitivo 9.
           </li>
         </ul>
       </S.Description>
 
       <S.Description>
-        <b>Exemplo Prático</b>: 52581 * 79
+        <S.SubTitle>Exemplo Números Maiores: 152 * 114</S.SubTitle>
         <ul>
           <li>
-            <b>A (52581)</b>: Level 5842 | Primitivo 3
+            <b>A (152)</b>: L = 16, P = 8
+            <br />
+            <b>B (114)</b>: L = 12, P = 6
+          </li>
+          <br />
+          <li>
+            <b>1. Interação Níveis:</b> <code>9 * (16 * 12) =</code> <b>1728</b>
           </li>
           <li>
-            <b>B (79)</b>: Level 8 | Primitivo 7
+            <b>2. Cruzamento A (16 * 6):</b> <b>96</b>
           </li>
           <li>
-            <b>Cálculo</b>:
+            <b>3. Cruzamento B (12 * 8):</b> <b>96</b>
+          </li>
+          <li>
+            <b>4. Transporte:</b> Produto <code>8 * 6 = 48</code>.
             <br />
-            9 * (5842 * 8) = 420624
-            <br />
-            (5842 * 7) = 40894
-            <br />
-            (8 * 3) = 24
-            <br />
-            Trabalho: ⌊(3 * 7) / 9⌋ = 2
-            <br />
-            <b>Total</b>: 420624 + 40894 + 24 + 2 = <b>461544</b>
+            Como 48 não divide por 9, utiliza apenas a parte inteira, no caso 5:{' '}
+            <code>⌊48 / 9⌋ =</code> <b>5</b>
+          </li>
+          <br />
+          <li>
+            <b>Level Final:</b> <code>1728 + 96 + 96 + 5 =</code> <b>1925</b>
+          </li>
+          <li>
+            <b>Primitivo Final:</b> <code>P(48) = 4 + 8 = 12 → 1 + 2 =</code>{' '}
+            <b>3</b>
           </li>
         </ul>
       </S.Description>
 
       <S.Description>
         <S.SubTitle>Exemplo Primitivo 9: 69002 * 27</S.SubTitle>
-
         <br />
         <ul>
           <li>
@@ -93,51 +104,57 @@ const MultiplicationRules: React.FC = () => (
           </li>
           <br />
           <li>
-            <b>1. Interação Níveis (Escala 9):</b>
+            <b>1. Interação Níveis:</b>
             <br />
-            Multiplicamos a interação dos níveis pela base do sistema.
-            <br />
-            <code>9 * (7666 * 2) = 9 * 15332 = </code> <b>137988</b>
+            <code>9 * (7666 * 2) = </code> <b>137988</b>
           </li>
           <br />
           <li>
-            <b>2. Cruzamento A (Nível A * Primitivo B):</b>
+            <b>2. Cruzamento A:</b>
             <br />
             <code>7666 * 9 = </code> <b>68994</b>
           </li>
           <br />
           <li>
-            <b>3. Cruzamento B (Nível B * Primitivo A):</b>
+            <b>3. Cruzamento B:</b>
             <br />
             <code>2 * 8 = </code> <b>16</b>
           </li>
           <br />
           <li>
-            <b>4. Trabalho (Transporte dos Primitivos):</b>
-            <br />O produto <code>8 * 9 = 72</code> é múltiplo de 9.
+            <b>4. Transporte (Múltiplo de 9):</b>
+            <br />O produto <code>8 * 9 = 72</code>.
             <br />
-            Para manter o Primitivo como 9, subtraímos 1 do quociente:
+            Subtraímos 1 para manter Primitivo 9:
             <br />
-            <code>(72 / 9) - 1 = 8 - 1 = </code> <b>7</b>
+            <code>(72 / 9) - 1 = </code> <b>7</b>
           </li>
           <br />
           <li>
             <hr />
-            <b>Level Final (Soma dos passos):</b>
+            <b>Level Final:</b> <b>207005</b>
             <br />
-            <code>137988 + 68994 + 16 + 7 = </code> <b>207005</b>
+            <b>Primitivo Final:</b> <b>9</b>
+          </li>
+        </ul>
+      </S.Description>
+
+      <S.Description>
+        <S.SubTitle>Exemplo de Transporte (Caso Simples): 125 * 13</S.SubTitle>
+        <br />
+        <ul>
+          <li>
+            <b>A (125)</b>: L = 13, P = 8
+            <br />
+            <b>B (13)</b>: L = 1, P = 4
           </li>
           <br />
           <li>
-            <b>5. Primitivo Final:</b>
-            <br />
-            Como 72 é múltiplo de 9, o Primitivo Final é <b>9</b>.
+            <b>Transporte:</b> Produto <code>32</code>.<code> ⌊32 / 9⌋ = </code>{' '}
+            <b>3</b>
           </li>
-          <br />
           <li>
-            <hr />
-            <b>Resultado Estruturado (Base 9):</b>
-            <br />L = 207005, P = 9
+            <b>Primitivo Final:</b> <code>P(32) = </code> <b>5</b>
           </li>
         </ul>
       </S.Description>
