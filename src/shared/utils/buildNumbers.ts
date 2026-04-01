@@ -24,4 +24,12 @@ const buildNumbers = (value: number) => {
   return dictionary[dictionaryKey];
 };
 
-export {buildNumbers, dictionary};
+const buildSum = (renderSum: (arg0: number) => any) => {
+  const randomNumbers: number[] = [];
+  for (let i = 0; i < 100; i += 1) {
+    randomNumbers.push(Math.floor(Math.random() * 100000));
+  }
+  return randomNumbers.map(item => renderSum(item));
+};
+
+export {buildNumbers, dictionary, buildSum};
