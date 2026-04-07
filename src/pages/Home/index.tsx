@@ -43,6 +43,33 @@ const Home: React.FC = () => {
   return (
     <S.Container>
       <S.Card>
+        <S.Title>Ai</S.Title>
+        <S.CardWrapper>
+          <button type="button">
+            <a href="/ai" style={{textDecoration: 'none', color: 'inherit'}}>
+              Ir para AI
+            </a>
+          </button>
+        </S.CardWrapper>
+      </S.Card>
+      <S.Card>
+        <S.Title>Gerar números</S.Title>
+        <S.Description>
+          Gerar os números a partir do level e primitivo do número 1.
+        </S.Description>
+        <S.CardWrapper>
+          {buildNumbers(100).map(item => {
+            const calc = calcLevel(item);
+
+            return (
+              <div key={item}>
+                Número {item}: level {calc.level}
+              </div>
+            );
+          })}
+        </S.CardWrapper>
+      </S.Card>
+      <S.Card>
         <S.Title>Calcular level e primitivo</S.Title>
         <S.Input
           inputMode="numeric"
